@@ -7,8 +7,6 @@ import Gallery from './components/gallery/gallery';
 function App() {
   return (
     <div className="App">
-       <Navbar/>
-       <Gallery/>
     </div>
   );
 }
