@@ -1,11 +1,20 @@
-import './App.css';
-
+import "./App.css";
+import Navbar from "./components/navbar/navbar";
+import Cardcomponent from "./components/cardcomponent/cardcomponent";
+import Bigtext from "./components/bigtext/bigtext";
+import AboutProject from "./components/AboutProject/AboutProject";
+import Footer from "./components/Footer/footer";
 
 
 function App() {
   return (
     <div className="App">
-      <a className=''>123</a>
+      <Navbar/>
+      <Bigtext/>
+      <Cardcomponent/>
+      <AboutProject/>
+      <Footer/>
+      
     </div>
   );
 }
