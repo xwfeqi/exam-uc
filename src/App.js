@@ -3,7 +3,7 @@ import Navbar from "./components/navbar/navbar";
 import Cardcomponent from "./components/cardcomponent/cardcomponent";
 import Bigtext from "./components/bigtext/bigtext";
 import AboutProject from "./components/AboutProject/AboutProject";
-import Footer from "./components/Footer/footer";
+import Footer from "./components/Footer/footer.js";
 
 
 function App() {

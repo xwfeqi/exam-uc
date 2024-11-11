@@ -4,6 +4,19 @@ import Navbar from "../navbar/navbar.js";
 const Bigtext = () => {
   return (
     <div
+      className="relative flex items-center justify-center min-h-screen bg-cover bg-center -mt-24 -z-10 h-auto"
+      style={{
+        backgroundImage: `url('https://images.unsplash.com/photo-1620121478247-ec786b9be2fa?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+      }}
+    >
+      {/* Dark overlay */}
+      <div className="absolute inset-0 backdrop-blur opacity-100"></div>
+
+      <div className="absolute inset-0 bg-black opacity-65"></div>
+
+      {/* Text content */}
+      <div className="relative max-w-4xl px-8  text-white z-10 text-center">
+
       className="relative flex items-center min-h-screen bg-cover bg-center"
       style={{
         backgroundImage: `url('https://images.unsplash.com/photo-1630164875263-598803175ee4?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
