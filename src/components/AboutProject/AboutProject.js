@@ -3,7 +3,6 @@ import { FaGlobe, FaLightbulb, FaUsers } from "react-icons/fa";
 
 const AboutProject = () => {
   return (
-
     <section className="flex items-center justify-center min-h-screen py-16 px-6 bg-blue-50">
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-10">

@@ -2,7 +2,6 @@ import React from "react";
 
 const Navbar = () => {
   return (
-
     <div>
     <nav className="shadow bg-slate-800 bg-opacity-75">
       <div className="container flex items-center justify-center p-6 mx-auto text-gray-600 capitalize dark:text-gray-300">
@@ -11,31 +10,6 @@ const Navbar = () => {
         <a href="#" className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6">features</a>
 
         <a href="#" className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6">pricing</a>
-
-    <div className="max-w-5xl m-auto">
-      <nav className="bg-white shadow dark:bg-gray-800 rounded-2xl m-1">
-        <div className="container flex items-center justify-center p-6 mx-auto text-gray-600 capitalize dark:text-gray-300">
-          <a
-            href="#1"
-            className="text-gray-800 dark:text-gray-200 border-b-2 border-blue-500 mx-1.5 sm:mx-6"
-          >
-            Home
-          </a>
-
-          <a
-            href="#2"
-            className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
-          >
-            Features
-          </a>
-
-          <a
-            href="#"
-            className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
-          >
-            Explore
-          </a>
-
 
         <a href="#" className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6">blog</a>
 
