@@ -14,7 +14,7 @@ const AboutProject = () => {
             <FaGlobe className="text-blue-600 text-4xl mb-4 mx-auto" />
             <h3 className="text-xl font-semibold text-blue-800 mb-2">Global Perspective</h3>
             <p className="text-blue-600">
-              Our mission is to showcase Ukrainian culture to a global audience, bridging cultures through stories, art, and history.
+              Or mission is to showcase Ukrainian culture to a global audience, bridging cultures through stories, art, and history.
             </p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300">
