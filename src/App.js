@@ -9,7 +9,6 @@ import Footer from "./components/Footer/footer.js";
 function App() {
   return (
     <div className="App">
-      <Navbar/>
       <Bigtext/>
       <Cardcomponent/>
       <AboutProject/>
