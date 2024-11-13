@@ -1,20 +1,14 @@
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRoutes from "./router/routes";
 import "./App.css";
-import Navbar from "./components/navbar/navbar";
-import Cardcomponent from "./components/cardcomponent/cardcomponent";
-import Bigtext from "./components/bigtext/bigtext";
-import AboutProject from "./components/AboutProject/AboutProject";
-import Footer from "./components/Footer/footer.js";
-
 
 function App() {
   return (
     <div className="App">
-      <Navbar/>
-      <Bigtext/>
-      <Cardcomponent/>
-      <AboutProject/>
-      <Footer/>
-      
+      <Router>
+        <AppRoutes />
+      </Router>
     </div>
   );
 }
