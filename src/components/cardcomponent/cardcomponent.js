@@ -26,7 +26,7 @@ const cards = [
 
 const CardComponent = () => {
   return (
-    <div className="flex justify-center items-center py-10 -mt-20">
+    <div className="flex justify-center items-center py-10 mt-20">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-screen-xl mx-auto">
         {cards.map((card, index) => (
           <div key={index} className="flex flex-col text-blue-500 bg-white shadow-2xl bg-clip-border z-10 rounded-xl w-full">
