@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import HomePage from "../components/HomePage/homePage.js";
+import HomePage from "../components/homePage/homePage.js";
 import DestPage from "../components/destPage/destPage.js";
 import RoutePage from "../components/routePage/routePage.js"
 
