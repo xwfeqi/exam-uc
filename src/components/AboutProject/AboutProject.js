@@ -1,11 +1,20 @@
 import React from "react";
 import { FaGlobe, FaLightbulb, FaUsers } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const AboutProject = () => {
   return (
+    
     <section className="flex items-center justify-center min-h-screen py-16 px-6 bg-blue-50">
+      
       <div className="max-w-5xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-10">
+      <Link
+        to="/"
+        className="mt-10 px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
+      >
+        Back to Home
+      </Link>
+        <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-10 mt-20">
           About Our Project
         </h2>
         <div className="grid gap-8 md:grid-cols-3">
@@ -32,6 +41,7 @@ const AboutProject = () => {
           </div>
         </div>
       </div>
+      
     </section>
   );
 };
