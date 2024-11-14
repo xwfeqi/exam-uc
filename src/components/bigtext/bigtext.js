@@ -3,7 +3,7 @@ import React from "react";
 const Bigtext = () => {
   return (
     <div
-      className="relative flex items-center justify-center min-h-screen bg-cover bg-center "
+      className="relative flex items-center justify-center min-h-screen bg-cover -mt-20 bg-center "
       style={{
         backgroundImage: `url('https://c0.wallpaperflare.com/preview/642/227/793/architectural-photography-of-gray-and-white-house.jpg')`,
       }}
