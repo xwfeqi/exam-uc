@@ -11,7 +11,6 @@ const HomePage = () => {
       <Navbar />
       <Bigtext />
       <ExploreLvivPage/>
-      <Cardcomponent />
       <Footer />
     </div>
   );

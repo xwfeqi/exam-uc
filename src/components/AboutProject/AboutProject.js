@@ -1,7 +1,7 @@
 import React from "react";
 import { FaGlobe, FaLightbulb, FaUsers } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import CardComponent from "../cardcomponent/cardcomponent";
 const AboutProject = () => {
   return (
     
@@ -40,6 +40,7 @@ const AboutProject = () => {
             </p>
           </div>
         </div>
+        <CardComponent />
       </div>
       
     </section>
