@@ -4,17 +4,17 @@ import React from "react";
 const cards = [
   {
     title: "Nazar Adidas",
-    description: "PM, FE, DBE (Drink Beer Everyday).",
+    description: "PM, Front-end.",
     imgSrc: "images/photo_2024-10-29_10-43-59.jpg"
   },
   {
-    title: "Ja ebu",
-    description: "FE, Designer, DVE(Drink Vodka Everyday)",
+    title: "Roma",
+    description: "Front-end, Designer",
     imgSrc: "images/photo_2024-09-09_13-13-02.jpg"
   },
   {
     title: "Mihuil Ogorodnik",
-    description: "Nihuja ne delav(Designer)",
+    description: "*",
     imgSrc: "images/photo_2024-08-29_18-43-42.jpg"
   },
   {
@@ -26,7 +26,7 @@ const cards = [
 
 const CardComponent = () => {
   return (
-    <div className="flex justify-center items-center py-10 -mt-20">
+    <div className="flex justify-center items-center py-10 mt-20">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-screen-xl mx-auto">
         {cards.map((card, index) => (
           <div key={index} className="flex flex-col text-blue-500 bg-white shadow-2xl bg-clip-border z-10 rounded-xl w-full">
