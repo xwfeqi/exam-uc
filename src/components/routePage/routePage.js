@@ -1,47 +1,101 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { MapContainer, TileLayer, Marker, Polyline, useMap } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 
 const routeDetails = {
   1: {
     title: "Historical Center Tour",
-    landmarks: ["Opera House", "City Hall", "Latin Cathedral", "Armenian Church"],
+    landmarks: [
+      { name: "Opera House", coords: [49.843, 24.026] },
+      { name: "City Hall", coords: [49.841, 24.031] },
+      { name: "Latin Cathedral", coords: [49.841, 24.030] },
+      { name: "Armenian Church", coords: [49.843, 24.030] },
+    ],
   },
   2: {
     title: "Churches & Cathedrals",
-    landmarks: ["St. George's Cathedral", "Dormition Church", "Latin Cathedral", "Armenian Cathedral"],
-  },
-  3: {
-    title: "Art & Culture Route",
-    landmarks: ["Lviv Art Gallery", "National Museum", "Les Kurbas Theater", "Potocki Palace"],
-  },
-  4: {
-    title: "Parks & Gardens",
-    landmarks: ["Stryiskyi Park", "Ivan Franko Park", "Shevchenkivskyi Hai"],
-  },
-  5: {
-    title: "Market Square Sights",
-    landmarks: ["Italian Courtyard", "Pharmacy Museum", "Boim Chapel"],
+    landmarks: [
+      { name: "St. George's Cathedral", coords: [49.838, 24.016] },
+      { name: "Dormition Church", coords: [49.840, 24.032] },
+      { name: "Latin Cathedral", coords: [49.841, 24.030] },
+      { name: "Armenian Cathedral", coords: [49.843, 24.030] },
+    ],
   },
 };
 
-const RoutePage = () => {
-  const { id } = useParams();
-  const route = routeDetails[id];
+const LocationFinder = ({ setUserLocation }) => {
+  const map = useMap();
 
-  if (!route) {
-    return <p>Route not found.</p>;
-  }
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        ({ coords }) => {
+          const { latitude, longitude } = coords;
+          setUserLocation([latitude, longitude]);
+          map.setView([latitude, longitude], 13);
+        },
+        () => alert("Unable to access your location")
+      );
+    }
+  }, [map, setUserLocation]);
+
+  return null;
+};
+
+const RouteMap = () => {
+  const [selectedRoute, setSelectedRoute] = useState("1");
+  const [userLocation, setUserLocation] = useState(null);
+  const route = routeDetails[selectedRoute];
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10 px-6">
-      <h1 className="text-3xl font-bold text-blue-600 mb-6">{route.title}</h1>
-      <ul className="list-disc list-inside text-lg text-gray-700">
+    <div className="relative min-h-screen">
+      <div className="absolute z-10 top-4 right-4 bg-white p-2 shadow-md rounded-md">
+        <select
+          value={selectedRoute}
+          onChange={(e) => setSelectedRoute(e.target.value)}
+          className="p-2 border rounded-md"
+        >
+          {Object.keys(routeDetails).map((id) => (
+            <option key={id} value={id}>
+              {routeDetails[id].title}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <MapContainer center={[49.841, 24.031]} zoom={13} className="h-full w-full">
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+
+        <LocationFinder setUserLocation={setUserLocation} />
+
+        {userLocation && (
+          <Marker
+            position={userLocation}
+            icon={L.icon({
+              iconUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
+              iconSize: [25, 41],
+              iconAnchor: [12, 41],
+            })}
+          />
+        )}
+
         {route.landmarks.map((landmark, index) => (
-          <li key={index}>{landmark}</li>
+          <Marker key={index} position={landmark.coords} />
         ))}
-      </ul>
+
+        {userLocation && (
+          <Polyline
+            positions={[userLocation, route.landmarks[0].coords]} // Маршрут до першого обраного орієнтира
+            color="blue"
+          />
+        )}
+      </MapContainer>
     </div>
   );
 };
 
-export default RoutePage;
+export default RouteMap;
