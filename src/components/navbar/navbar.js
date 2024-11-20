@@ -30,17 +30,6 @@ const Navbar = () => {
         >
           AboutProject
         </Link>
-
-        <Link
-          to="/pricing"
-          className={`mx-6 text-base font-semibold font-poppins ${
-            location.pathname === "/pricing"
-              ? "text-white border-b-2 border-blue-500"
-              : "text-gray-300 border-b-2 border-transparent hover:text-white hover:border-blue-500"
-          }`}
-        >
-          Pricing
-        </Link>
       </nav>
     </div>
   );

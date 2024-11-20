@@ -2,10 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const elements = [
-  { id: 1, title: "Заклади", description: "Відчуйте Львів на смак!", path: "dest-page" },
+  { id: 1, title: "Маршрути", description: "Перейдіть", path: "dest-page" },
   { id: 2, title: "Місця", description: "Перейдіть", path: "/places" },
-  { id: 3, title: "Гіди", description: "Перейдіть", path: "/guides" },
-  { id: 4, title: "Події", description: "Перейдіть", path: "/events" },
+  { id: 4, title: "Памятники", description: "Перейдіть", path: "/events" },
 ];
 
 const ExploreLvivPage = () => {
