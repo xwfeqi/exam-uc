@@ -3,9 +3,9 @@ import React from "react";
 const Bigtext = () => {
   return (
     <div
-      className="relative flex items-center justify-center min-h-screen bg-cover -mt-20 bg-center "
+      className="relative flex items-center justify-center min-h-screen bg-cover  bg-center "
       style={{
-        backgroundImage: `url('https://c0.wallpaperflare.com/preview/642/227/793/architectural-photography-of-gray-and-white-house.jpg')`,
+        backgroundImage: `url('https://lviv.travel/image/news/6d/7c/6d7cbcb17b84deea15e0c1a6497c5130961f7156_1597159209.png?crop=1070%2C576%2C119%2C0')`,
       }}
     >
       {/* Dark overlay */}

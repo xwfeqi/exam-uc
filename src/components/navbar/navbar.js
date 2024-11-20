@@ -1,39 +1,46 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const location = useLocation();
+
   return (
-    <div>
-      <nav className="relative shadow bg-gray-600 bg-opacity-75 z-10">
-        <div className="container flex items-center justify-center p-6 mx-auto text-gray-600 capitalize dark:text-gray-300">
-          <Link
-            to="/"
-            className="text-gray-800 dark:text-gray-200 border-b-2 border-blue-500 mx-1.5 sm:mx-6"
-          >
-            Home
-          </Link>
+    <div className="bg-black bg-opacity-50 shadow fixed top-0 left-0 w-full z-50 p-1">
+      {/* Обмеження ширини навігаційного меню */}
+      <nav className="max-w-screen-md mx-auto flex items-center justify-center p-4">
+        {/* Посилання */}
+        <Link
+          to="/"
+          className={`mx-6 text-base font-semibold font-poppins ${
+            location.pathname === "/"
+              ? "text-white border-b-2 border-blue-500"
+              : "text-gray-300 border-b-2 border-transparent hover:text-white hover:border-blue-500"
+          }`}
+        >
+          Home
+        </Link>
 
-          <Link
-            to="/aboutProject"
-            className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
-          >
-            AboutProject
-          </Link>
+        <Link
+          to="/aboutProject"
+          className={`mx-6 text-base font-semibold font-poppins ${
+            location.pathname === "/aboutProject"
+              ? "text-white border-b-2 border-blue-500"
+              : "text-gray-300 border-b-2 border-transparent hover:text-white hover:border-blue-500"
+          }`}
+        >
+          AboutProject
+        </Link>
 
-          <Link
-            to="/pricing"
-            className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
-          >
-            Pricing
-          </Link>
-
-          <Link
-            to="/blog"
-            className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
-          >
-            Blog
-          </Link>
-        </div>
+        <Link
+          to="/pricing"
+          className={`mx-6 text-base font-semibold font-poppins ${
+            location.pathname === "/pricing"
+              ? "text-white border-b-2 border-blue-500"
+              : "text-gray-300 border-b-2 border-transparent hover:text-white hover:border-blue-500"
+          }`}
+        >
+          Pricing
+        </Link>
       </nav>
     </div>
   );
