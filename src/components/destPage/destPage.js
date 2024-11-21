@@ -5,44 +5,37 @@ import Navbar from "../navbar/navbar";
 const routes = [
   {
     id: 1,
-    title: "Historical Center Tour",
+    title: "Історичний Львів",
     description: "Explore key landmarks in Lviv's historic center.",
     path: "/route/1",
     image: "https://backiee.com/static/wallpapers/3840x2160/195475.jpg"
   },
   {
     id: 2,
-    title: "Churches & Cathedrals",
+    title: "Релігійні пам’ятки",
     description: "Visit the most famous churches and cathedrals in Lviv.",
     path: "/route/2",
     image: "https://img.freepik.com/premium-photo/winter-view-downtown-lviv-ukraine_697216-6452.jpg"
   },
   {
     id: 3,
-    title: "Art & Culture Route",
+    title: "Культурно-мистецькі місця",
     description: "Discover museums, galleries, and theaters.",
     path: "/route/3",
     image: "https://images.pexels.com/photos/20967/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   },
   {
     id: 4,
-    title: "Parks & Gardens",
+    title: "Неординарна архітектура",
     description: "Enjoy Lviv’s green spaces and scenic parks.",
     path: "/route/4",
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Park_Franko_in_Lviv.jpg/1024px-Park_Franko_in_Lviv.jpg"
-  },
-  {
-    id: 5,
-    title: "Market Square Sights",
-    description: "Explore popular attractions around Market Square.",
-    path: "/route/5",
-    image: "https://manvsclock.com/wp-content/uploads/2021/06/things-to-do-in-lviv.jpg"
   },
 ];
 
 const DestPage = () => {
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-slate-100 text-white">
       {/* Navbar */}
       <Navbar />
 
