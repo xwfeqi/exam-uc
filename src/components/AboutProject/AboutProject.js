@@ -9,7 +9,7 @@ const AboutProject = () => {
       {/* Navbar - окремо від основного контенту */}
       <Navbar />
 
-      <section className="min-h-screen flex flex-col items-center justify-center py-16 px-6 pt-96">
+      <section className="min-h-screen flex flex-col items-center justify-center py-16 px-6">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-4xl font-extrabold text-black mb-12 mt-12">
             About Our Project

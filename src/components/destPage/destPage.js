@@ -5,14 +5,14 @@ import Navbar from "../navbar/navbar";
 const routes = [
   {
     id: 1,
-    title: "Історичний Львів",
+    title: "Історичний пам'ятки Львову",
     description: "Explore key landmarks in Lviv's historic center.",
     path: "/route/1",
     image: "https://backiee.com/static/wallpapers/3840x2160/195475.jpg"
   },
   {
     id: 2,
-    title: "Релігійні пам’ятки",
+    title: "Релігійні пам’ятки Львову",
     description: "Visit the most famous churches and cathedrals in Lviv.",
     path: "/route/2",
     image: "https://img.freepik.com/premium-photo/winter-view-downtown-lviv-ukraine_697216-6452.jpg"
