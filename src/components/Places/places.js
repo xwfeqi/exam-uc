@@ -7,25 +7,133 @@ const places = [
     id: 1,
     title: "Вілла Грушевських",
     description: "Опис місця 1",
-    image: "./images/Villa Grushevskih.png",
-    location: "49.82252930294651, 24.03088770588007",
+    image: "./images/Villa_Hrushevsky.png",
+    location: "проспект Шевченка, Львів, Львівська область, 79000",
     map: "https://www.google.com/maps?q=1",
-    category: "Історичні",
+    category: "Будинки",
   },
   {
     id: 2,
-    title: "Місце 2",
+    title: "Готель Дністер",
     description: "Опис місця 2",
-    image: "https://via.placeholder.com/400",
+    image: "./images/Dnister_Building.png",
     location: "Адреса місця 2",
     map: "https://www.google.com/maps?q=2",
     category: "Природні",
   },
   {
     id: 3,
-    title: "Місце 3",
+    title: "Галицька ощадна каса",
     description: "Опис місця 3",
-    image: "https://via.placeholder.com/400",
+    image: "./images/Galycka_Oshchadna_Kasa.png",
+    location: "Адреса місця 3",
+    map: "https://www.google.com/maps?q=3",
+    category: "Культурні",
+  },
+  {
+    id: 3,
+    title: "Гранд Готель",
+    description: "Опис місця 3",
+    image: "./images/Grand_Hotel.png",
+    location: "Адреса місця 3",
+    map: "https://www.google.com/maps?q=3",
+    category: "Культурні",
+  },
+  {
+    id: 3,
+    title: "Будинок учених",
+    description: "Опис місця 3",
+    image: "./images/House_of_Scientists.png",
+    location: "Адреса місця 3",
+    map: "https://www.google.com/maps?q=3",
+    category: "Культурні",
+  },
+  {
+    id: 3,
+    title: "Будинок з химерами",
+    description: "Опис місця 3",
+    image: "./images/House_with_Chimeras.png",
+    location: "Адреса місця 3",
+    map: "https://www.google.com/maps?q=3",
+    category: "Культурні",
+  },
+  {
+    id: 3,
+    title: "Палац Потоцьких",
+    description: "Опис місця 3",
+    image: "./images/Lviv_Citadel.png",
+    location: "Адреса місця 3",
+    map: "https://www.google.com/maps?q=3",
+    category: "Культурні",
+  },
+  {
+    id: 3,
+    title: "Місце 8",
+    description: "Опис місця 3",
+    image: "./images/Monastery_Lazar.png",
+    location: "Адреса місця 3",
+    map: "https://www.google.com/maps?q=3",
+    category: "Культурні",
+  },
+  {
+    id: 3,
+    title: "Місце 9",
+    description: "Опис місця 3",
+    image: "./images/Monastery_Onufriy.png",
+    location: "Адреса місця 3",
+    map: "https://www.google.com/maps?q=3",
+    category: "Культурні",
+  },
+  {
+    id: 3,
+    title: "Місце 10",
+    description: "Опис місця 3",
+    image: "./images/Palac Semenskih-levyckih.png",
+    location: "Адреса місця 3",
+    map: "https://www.google.com/maps?q=3",
+    category: "Культурні",
+  },
+  {
+    id: 3,
+    title: "Місце 11",
+    description: "Опис місця 3",
+    image: "./images/Palace_Besyadetskykh.png",
+    location: "Адреса місця 3",
+    map: "https://www.google.com/maps?q=3",
+    category: "Культурні",
+  },
+  {
+    id: 3,
+    title: "Місце 12",
+    description: "Опис місця 3",
+    image: "./images/Palace_Goluhovsky.png",
+    location: "Адреса місця 3",
+    map: "https://www.google.com/maps?q=3",
+    category: "Культурні",
+  },
+  {
+    id: 3,
+    title: "Місце 13",
+    description: "Опис місця 3",
+    image: "./images/Palace_Sosnovskogo.png",
+    location: "Адреса місця 3",
+    map: "https://www.google.com/maps?q=3",
+    category: "Культурні",
+  },
+  {
+    id: 3,
+    title: "Місце 14",
+    description: "Опис місця 3",
+    image: "./images/Palac Semenskih-levyckih.png",
+    location: "Адреса місця 3",
+    map: "https://www.google.com/maps?q=3",
+    category: "Культурні",
+  },
+  {
+    id: 3,
+    title: "Місце 10",
+    description: "Опис місця 3",
+    image: "./images/Palac Semenskih-levyckih.png",
     location: "Адреса місця 3",
     map: "https://www.google.com/maps?q=3",
     category: "Культурні",
@@ -115,52 +223,54 @@ const Places = () => {
                   className="w-full h-40 object-cover mb-4"
                 />
                 <div className="text-xl font-bold text-black mb-2">{place.title}</div>
-                <div className="text-sm text-gray-700">{place.description}</div>
+                
               </div>
             ))}
           </div>
 
           {/* Модальне вікно з деталями місця */}
-          {selectedPlace && (
-            <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-              <div className="bg-white p-6 shadow-lg max-w-xl w-full">
-                <button
-                  className="absolute top-2 right-2 text-black font-bold"
-                  onClick={handleCloseModal}
-                >
-                  X
-                </button>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <img
-                      src={selectedPlace.image}
-                      alt={selectedPlace.title}
-                      className="w-full h-40 object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-black">{selectedPlace.title}</h3>
-                    <p className="text-gray-700">{selectedPlace.description}</p>
-                    <div className="mt-4">
-                      <h4 className="font-bold text-black">Адреса:</h4>
-                      <p className="text-gray-700">{selectedPlace.location}</p>
-                    </div>
-                    <div className="mt-4">
-                      <h4 className="font-bold text-black">Карта:</h4>
-                      <a
-                        href={selectedPlace.map}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-black underline"
-                      >
-                        Переглянути на карті
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+{selectedPlace && (
+  <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center">
+    <div className="bg-white p-8 shadow-xl rounded-lg max-w-4xl w-full">
+      <button
+        className="absolute top-4 right-4 text-black text-3xl font-bold"
+        onClick={handleCloseModal}
+      >
+        &times;
+      </button>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="relative">
+          <img
+            src={selectedPlace.image}
+            alt={selectedPlace.title}
+            className="w-full h-full object-cover rounded-lg"
+          />
+        </div>
+        <div className="flex flex-col justify-between">
+          <div>
+            <h3 className="text-2xl font-bold text-black">{selectedPlace.title}</h3>
+            <p className="text-gray-800 mt-2">{selectedPlace.description}</p>
+          </div>
+          <div className="mt-6">
+            <h4 className="font-semibold text-black">Адреса:</h4>
+            <p className="text-gray-700">{selectedPlace.location}</p>
+          </div>
+          <div className="mt-4">
+            <h4 className="font-semibold text-black">Карта:</h4>
+            <a
+              href={selectedPlace.map}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 underline"
+            >
+              Переглянути на карті
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
         </div>
       </section>
     </div>

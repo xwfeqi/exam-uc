@@ -34,11 +34,11 @@ const Bigtext = () => {
           Explore Lviv with us
         </h1>
         <p className="mt-6 text-lg md:text-xl leading-relaxed">
-          This is a sample text component designed to take up the full screen
+        Відчуйте справжню магію старовинного Львова разом з нами!
           <span className="text-transparent bg-clip-text ">
-            width and height. It provides ample space to{" "}
+            width and height. It provides ample space to 12{" "}
           </span>
-          convey important information in an appealing layout. Whether
+          Зануртесь у вулички, пам'ятки, маршрути і памятники Львова!
         </p>
       </div>
     </div>

@@ -35,34 +35,27 @@ const routes = [
 
 const DestPage = () => {
   return (
-    <div className="min-h-screen bg-slate-100 text-white">
+    <div className="min-h-screen bg-gray-800 text-white pt-24">
       {/* Navbar */}
       <Navbar />
 
-      {/* Route Blocks */}
-      <div className="w-full max-w-screen-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 mx-auto ">
+      {/* Main Content */}
+      <div className="px-8 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-screen-xl mx-auto">
         {routes.map((route) => (
           <Link
             to={route.path}
             key={route.id}
-            className="relative group block overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+            className="relative group flex flex-col items-center overflow-hidden rounded-lg shadow-xl bg-gradient-to-r from-gray-700 via-gray-900 to-black hover:scale-105 transition-all duration-500"
           >
-            {/* Image with Grayscale Filter */}
-            <div className="relative w-full h-64 bg-gray-800 mt-32">
-              <img
-                src={route.image}
-                alt={route.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-20 transition-all duration-300"></div>
+            {/* Card Image */}
+            <div className="w-full h-48 sm:h-64 md:h-80 bg-cover bg-center transition-all duration-500"
+              style={{ backgroundImage: `url(${route.image})` }}>
             </div>
 
-            {/* Title and Description */}
-            <div className="absolute inset-x-0 bottom-0 bg-black bg-opacity-70 p-4">
-              <h2 className="text-xl font-semibold">{route.title}</h2>
-              <p className="text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                {route.description}
-              </p>
+            {/* Text Block */}
+            <div className="p-4 flex flex-col items-center justify-center bg-opacity-80 bg-black w-full text-center">
+              <h2 className="text-2xl font-bold text-white">{route.title}</h2>
+              <p className="text-sm text-gray-300 mt-2">{route.description}</p>
             </div>
           </Link>
         ))}

@@ -1,56 +1,68 @@
-import man_1 from "./../../Images/image-from-rawpixel-id-6740096-png.png";
-import man_2 from "./../../Images/image-from-rawpixel-id-6740096-png.png";
-import man_3 from "./../../Images/image-from-rawpixel-id-6740096-png.png";
-import man_4 from "./../../Images/image-from-rawpixel-id-6740096-png.png";
-import man_5 from "./../../Images/image-from-rawpixel-id-6740096-png.png";
-
-
-import "../sculpt/section.css"
-
+import { useState, useEffect } from "react";
+import man_1 from "./../../Images/taras.png";
+import man_2 from "./../../Images/lesya.gif";
+import man_3 from "./../../Images/franko.jpg";
 
 
 const Sculpt = () => {
+  const images = [
+    { 
+      src: man_1, 
+      text: `"Заповітаю тобі, сину, на світі любити,  
+              Свою Вітчизну, її святу землю."`, 
+      author: "Тарас Шевченко"
+    },
+    { 
+      src: man_2, 
+      text: `"Якщо ти вірно любиш рідну землю,  
+              То й життя твоє не даремне."`, 
+      author: "Леся Українка"
+    },
+    { 
+      src: man_3, 
+      text: `"Без культури, без науки немає нації,  
+              немає й майбутнього."`, 
+      author: "Іван Франко"
+    },
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isFading, setIsFading] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsFading(true);
+      setTimeout(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        setIsFading(false);
+      }, 800); // Тривалість анімації зміни
+    }, 10000); // Інтервал зміни фото/тексту
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   return (
-    <section>
-      
-      <div className="section_holder">
-        <div className="width">
-          <div className="smash_sale">
-            <div className="year"></div>
-          </div>
-
-          <div className="mans_holder">
-            <div className="mans">
-              {[man_1, man_2, man_3, man_4, man_5].map((img, i) => (
-                <div className="mns">
-                  <a href="@">
-                    <img
-                      src={img}
-                      alt=""
-                      className="general_man"
-                      style={{ "--man-height": `${300 + i * 30}px` }}
-                    ></img>
-                  </a>
-                </div>
-              ))}
-              {[].map((img, i) => (
-                <div className="mns">
-                  <a href="@">
-                    <img
-                      src={img}
-                      alt=""
-                      className="general_man"
-                      style={{ "--man-height": `${390 - i * 10}px` }}
-                    ></img>
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div>
+    <section className="flex items-center justify-center -mt-24  bg-gray-100">
+      <div className="flex items-center gap-12 max-w-7xl mx-auto">
+        {/* Фото */}
+        <div
+          className={`relative w-96 aspect-square transition-opacity duration-500 ${isFading ? "opacity-0" : "opacity-100"}`}
+        >
+          <img
+            src={images[currentIndex].src}
+            alt="Famous person"
+            className="w-full h-full object-contain rounded-lg"
+          />
         </div>
-      </div>
 
-      
+        {/* Текст */}
+        <blockquote
+          className={`text-left text-3xl font-semibold text-gray-800 transition-opacity duration-500 ${isFading ? "opacity-0" : "opacity-100"}`}
+          style={{ fontFamily: "'Dancing Script', cursive" }}
+        >
+          <p>{images[currentIndex].text}</p>
+          <footer className="text-lg text-gray-600 mt-4">{images[currentIndex].author}</footer>
+        </blockquote>
+      </div>
     </section>
   );
 };
