@@ -1,41 +1,102 @@
 import React, { useState, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { useParams } from "react-router-dom";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-routing-machine";
 
+// Дані про маршрути
 const routeDetails = {
   1: {
-    title: "Historical Center Tour",
+    title: "Історичний Львів",
     landmarks: [
-      { 
-        name: "Opera House", 
-        coords: [49.843, 24.026], 
+      {
+        name: "Монастир святого Онуфрія",
+        coords: [49.849013, 24.028445],
         description: "An iconic building for opera performances.",
-        image: "/path/to/opera-house.jpg" 
+        image: "/images/mon St. Onufrii.png",
       },
-      { 
-        name: "City Hall", 
-        coords: [49.841, 24.031], 
+      {
+        name: "Храм святого Івана Хрестителя",
+        coords: [49.846870, 24.030516],
         description: "The administrative center of the city.",
-        image: "/path/to/city-hall.jpg" 
+        image: "/images/Temple st. ivana hrestytelia.png",
       },
-      { 
-        name: "Latin Cathedral", 
-        coords: [49.841, 24.030], 
+      {
+        name: "Будинок вчених",
+        coords: [49.841051, 24.021625],
         description: "A magnificent cathedral with stunning architecture.",
-        image: "/path/to/latin-cathedral.jpg" 
+        image: "/images/house of scientists.png",
       },
-      { 
-        name: "Armenian Church", 
-        coords: [49.843, 24.030], 
+      {
+        name: "Галицька ощадна каса",
+        coords: [49.841131, 24.027344],
         description: "A historic Armenian church in the city.",
-        image: "/path/to/armenian-church.jpg" 
+        image: "/images/Galyckia oshchadna kasa.png",
+      },
+    ],
+  },
+  2: {
+    title: "Архітектурні шедеври",
+    landmarks: [
+      {
+        name: "Вілла Бачевських",
+        coords: [49.829919, 24.024488],
+        description: "An iconic building for opera performances.",
+        image: "/images/Villa Bachevskih.png",
+      },
+      {
+        name: "Палац графа Голуховського",
+        coords: [49.840207, 24.018755],
+        description: "The administrative center of the city.",
+        image: "/images/Palaca grafa Goluhovskiogo.png",
+      },
+      {
+        name: "Будинок страхового товариства 'Дністер'",
+        coords: [49.841808, 24.035134],
+        description: "A magnificent cathedral with stunning architecture.",
+        image: "/images/Budynok Dnister.png",
+      },
+      {
+        name: "Палац Семенських-Левицьких",
+        coords: [49.838827, 24.040265],
+        description: "A historic Armenian church in the city.",
+        image: "/images/Palac Semenskih-levyckih.png",
+      },
+    ],
+  },
+  3: {
+    title: "Замки та палаци",
+    landmarks: [
+      {
+        name: "Палац Туркулів-Комелло",
+        coords: [49.836448, 24.045299],
+        description: "An iconic building for opera performances.",
+        image: "/images/Palac Turkuliv-Komello.png",
+      },
+      {
+        name: "Палац Сосновського",
+        coords: [49.831609, 24.010354],
+        description: "The administrative center of the city.",
+        image: "/images/Palac Sosnovskogo.png",
+      },
+      {
+        name: "Палац Семенських-Левицьких",
+        coords: [49.841808, 24.035134],
+        description: "A magnificent cathedral with stunning architecture.",
+        image: "/images/Budynok Dnister.png",
+      },
+      {
+        name: "Палац Семенських-Левицьких",
+        coords: [49.838827, 24.040265],
+        description: "A historic Armenian church in the city.",
+        image: "/images/Palac Semenskih-levyckih.png",
       },
     ],
   },
 };
 
+// Компонент для отримання геолокації користувача
 const LocationFinder = ({ setUserLocation, setErrorMessage }) => {
   useEffect(() => {
     if (navigator.geolocation) {
@@ -59,14 +120,25 @@ const LocationFinder = ({ setUserLocation, setErrorMessage }) => {
 };
 
 const RouteMap = () => {
+  const { id } = useParams(); // Отримуємо ID маршруту з URL
   const [selectedLandmark, setSelectedLandmark] = useState(null);
+  const [landmarks, setLandmarks] = useState([]);
   const [userLocation, setUserLocation] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const routeControlRef = useRef(null); // Reference to hold the route control
+  const routeControlRef = useRef(null);
+
+  useEffect(() => {
+    const route = routeDetails[id];
+    if (route) {
+      setLandmarks(route.landmarks);
+    } else {
+      setLandmarks([]);
+    }
+  }, [id]);
 
   const handleLandmarkChange = (e) => {
-    const selected = routeDetails[1].landmarks.find(
+    const selected = landmarks.find(
       (landmark) => landmark.name === e.target.value
     );
     setSelectedLandmark(selected);
@@ -80,35 +152,39 @@ const RouteMap = () => {
   });
 
   const Route = ({ userLocation, selectedLandmark }) => {
-    const map = useMap();  // useMap hook provides access to the map instance
-  
+    const map = useMap(); // useMap hook provides access to the map instance
+
     useEffect(() => {
       if (userLocation && selectedLandmark) {
         const userLatLng = L.latLng(userLocation);
         const landmarkLatLng = L.latLng(selectedLandmark.coords);
-  
+
         // Перевірка на існування контролера маршруту
         if (routeControlRef.current) {
-          console.log("Removing previous route");
-  
-          // Очищення всіх точок шляху, використовуючи сам контролер
           routeControlRef.current.setWaypoints([userLatLng, landmarkLatLng]);
         } else {
-          // Якщо маршруту ще немає, створюємо новий
           routeControlRef.current = L.Routing.control({
             waypoints: [userLatLng, landmarkLatLng],
             routeWhileDragging: true,
-            createMarker: () => null, // Не створюємо маркери для waypoints
+            createMarker: () => null,
+            show: false,
           }).addTo(map);
+        }
+
+        // Видалення контейнера з DOM
+        const routingContainer = document.querySelector(".leaflet-routing-container");
+        if (routingContainer) {
+          routingContainer.remove();
         }
       }
     }, [userLocation, selectedLandmark, map]);
-  
+
     return null;
   };
 
   return (
     <div className="relative min-h-screen bg-gray-100 flex flex-col items-center justify-center">
+      {/* Вибір пам’ятки */}
       <div className="absolute z-10 top-4 right-4 bg-white p-4 shadow-md rounded-lg">
         <label htmlFor="landmark-select" className="block text-gray-700 font-medium mb-2">
           Select a Landmark:
@@ -120,7 +196,7 @@ const RouteMap = () => {
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300"
         >
           <option value="" disabled>Select a landmark</option>
-          {routeDetails[1].landmarks.map((landmark, index) => (
+          {landmarks.map((landmark, index) => (
             <option key={index} value={landmark.name}>
               {landmark.name}
             </option>
@@ -128,9 +204,13 @@ const RouteMap = () => {
         </select>
       </div>
 
+      {/* Компонент для отримання геолокації */}
+      <LocationFinder setUserLocation={setUserLocation} setErrorMessage={setErrorMessage} />
+
+      {/* Карта */}
       <div className="w-full max-w-3xl h-80 border border-gray-300 rounded-md shadow-md mt-10">
         <MapContainer
-          center={userLocation || [49.841, 24.031]} // Default center if userLocation is not set
+          center={userLocation || [49.841, 24.031]}
           zoom={13}
           className="h-full w-full rounded-md"
         >
@@ -138,8 +218,6 @@ const RouteMap = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
-
-          <LocationFinder setUserLocation={setUserLocation} setErrorMessage={setErrorMessage} />
 
           {userLocation && (
             <Marker position={userLocation} icon={customIcon}>
@@ -153,13 +231,11 @@ const RouteMap = () => {
             </Marker>
           )}
 
-          {userLocation && selectedLandmark && (
-            <Route userLocation={userLocation} selectedLandmark={selectedLandmark} />
-          )}
+          <Route userLocation={userLocation} selectedLandmark={selectedLandmark} />
         </MapContainer>
       </div>
 
-      {/* Information Section below the map */}
+      {/* Інформація про пам’ятку */}
       {selectedLandmark && (
         <div className="w-full max-w-3xl mt-10 bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-xl font-bold mb-4">{selectedLandmark.name}</h2>

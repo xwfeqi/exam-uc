@@ -5,10 +5,10 @@ import Navbar from "../navbar/navbar"; // імпорт компонента Navb
 const places = [
   {
     id: 1,
-    title: "Місце 1",
+    title: "Вілла Грушевських",
     description: "Опис місця 1",
-    image: "https://via.placeholder.com/400",
-    location: "Адреса місця 1",
+    image: "./images/Villa Grushevskih.png",
+    location: "49.82252930294651, 24.03088770588007",
     map: "https://www.google.com/maps?q=1",
     category: "Історичні",
   },

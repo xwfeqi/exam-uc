@@ -8,13 +8,13 @@ const cards = [
     imgSrc: "images/photo_2024-10-29_10-43-59.jpg"
   },
   {
-    title: "Roma",
+    title: "Jura",
     description: "Front-end, Designer",
     imgSrc: "images/photo_2024-09-09_13-13-02.jpg"
   },
   {
     title: "Mihuil Ogorodnik",
-    description: "*",
+    description: "Designer, Editer",
     imgSrc: "images/photo_2024-08-29_18-43-42.jpg"
   },
   {

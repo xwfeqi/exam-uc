@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../components/HomePage/homePage.js";
 import DestPage from "../components/destPage/destPage.js";
-import RoutePage from "../components/routePage/routePage.js"
+import RoutePage from "../components/RoutePage/routePage.js";
 import AboutProject from "../components/AboutProject/AboutProject.js";
 import Places from "../components/Places/places.js";
 

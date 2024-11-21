@@ -28,7 +28,7 @@ const Navbar = () => {
               : "text-gray-300 border-b-2 border-transparent hover:text-white hover:border-blue-500"
           }`}
         >
-          AboutProject
+          About Project
         </Link>
       </nav>
     </div>
