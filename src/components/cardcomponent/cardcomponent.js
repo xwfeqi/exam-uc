@@ -10,7 +10,7 @@ const cards = [
   {
     title: "Roman Masliana",
     description: "Front-end, Designer",
-    imgSrc: "images/photo_2024-09-09_13-13-02.jpg"
+    imgSrc: "images/roma.jpg"
   },
   {
     title: "Myhailo Moskalchuk",

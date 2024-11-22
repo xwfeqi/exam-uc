@@ -3,7 +3,6 @@ import man_1 from "./../../Images/taras.png";
 import man_2 from "./../../Images/lesya.gif";
 import man_3 from "./../../Images/franko.jpg";
 
-
 const Sculpt = () => {
   const images = [
     { 
@@ -41,7 +40,7 @@ const Sculpt = () => {
   }, [images.length]);
 
   return (
-    <section className="flex items-center justify-center -mt-24  bg-gray-100">
+    <section className="flex items-center justify-center -mt-24 bg-gray-100">
       <div className="flex items-center gap-12 max-w-7xl mx-auto">
         {/* Фото */}
         <div
@@ -55,13 +54,18 @@ const Sculpt = () => {
         </div>
 
         {/* Текст */}
-        <blockquote
-          className={`text-left text-3xl font-semibold text-gray-800 transition-opacity duration-500 ${isFading ? "opacity-0" : "opacity-100"}`}
-          style={{ fontFamily: "'Dancing Script', cursive" }}
-        >
-          <p>{images[currentIndex].text}</p>
-          <footer className="text-lg text-gray-600 mt-4">{images[currentIndex].author}</footer>
-        </blockquote>
+        <div className="w-2/3">
+          <blockquote
+            className={`text-left text-3xl font-semibold text-gray-800 transition-opacity duration-500 ${isFading ? "opacity-0" : "opacity-100"}`}
+            style={{ fontFamily: "'Dancing Script', cursive", minHeight: "8rem" }} // Фіксована висота
+          >
+            <p>{images[currentIndex].text}</p>
+          </blockquote>
+          <footer className="text-lg text-gray-600 mt-4 text-right" style={{ fontFamily: "'Great Vibes', cursive" }}>
+            {/* Писаний шрифт для автора */}
+            {images[currentIndex].author}
+          </footer>
+        </div>
       </div>
     </section>
   );
