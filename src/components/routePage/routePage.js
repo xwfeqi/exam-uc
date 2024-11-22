@@ -243,7 +243,7 @@ const RouteMap = () => {
           {landmarks.map((landmark, index) => (
             <div
               key={index}
-              className="flex items-center cursor-pointer p-2 hover:bg-gray-200 rounded-md"
+              className="flex items-center cursor-pointer p-2  rounded-md"
               onClick={() => handleLandmarkChange(landmark)} // передаємо пам'ятку при кліку
             >
               <img
